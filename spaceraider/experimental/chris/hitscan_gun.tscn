@@ -1,3 +1,28 @@
-[gd_scene format=3 uid="uid://cf7lh4j754nva"]
+[gd_scene load_steps=4 format=3 uid="uid://cf7lh4j754nva"]
 
-[node name="HitscanGun" type="Node3D"]
+[sub_resource type="BoxMesh" id="BoxMesh_a1uk7"]
+size = Vector3(0.2, 0.2, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_uin4t"]
+size = Vector3(0.15, 0.1, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dgsqx"]
+size = Vector3(0.2, 0.2, 1)
+
+[node name="HitscanGun" type="RigidBody3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_a1uk7")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.98023e-08, 0, -1, 0, 1, 0, 1, 0, 2.98023e-08, 0.287365, 0, 0.171631)
+mesh = SubResource("BoxMesh_uin4t")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_dgsqx")
+
+[node name="hand_pos" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.341385)
+
+[node name="barrel" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0161273, 0.018136, 0.468766)

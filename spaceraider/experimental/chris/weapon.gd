@@ -1,12 +1,18 @@
-extends Node3D
+extends RigidBody3D
 
 class_name Weapon
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+var attachment_joint = null
+var source_pos = Vector3(0,0,0)
+var offset = Vector3(0,0,0)
+var offset_reduction_rate = 3
 
+func i_am_being_looked_at(player_that_is_looking_at_me : PlayerBody):
+	pass
+	
+func hold(attach_to):
+	attachment_joint = attach_to
+	#collision_layer = 0
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func shoot():
 	pass
