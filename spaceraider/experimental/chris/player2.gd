@@ -23,7 +23,9 @@ const FOV_CHANGE = 1.25
 @onready var camera = $head/Camera3D
 @onready var eye_ray = $head/Camera3D/look_ray
 
-signal im_looking_at(object)
+var i_am_looking_at : Holdable = null
+var i_am_holding = null
+#signal im_looking_at(object)
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -33,7 +35,30 @@ func _unhandled_input(event: InputEvent) -> void:
 		head.rotate_y(-event.relative.x * SENSITIVITY)
 		camera.rotate_x(-event.relative.y * SENSITIVITY)
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-60), deg_to_rad(80))
+	
+	if event is InputEventMouseButton:
+		if event.button_index == 1:
+			if event.pressed:
+				if i_am_holding:
+					#print("start shooting")
+					i_am_holding.use()
+			else:
+				if i_am_holding:
+					i_am_holding.dont_use()
+		
+	
+	if event is InputEventKey and event.pressed:
+		if OS.get_keycode_string(event.keycode) == 'E':
+			
+			if i_am_holding:
+				i_am_holding.drop()
+				i_am_holding = null
+			
+			if i_am_looking_at:
+				i_am_holding = i_am_looking_at
+				i_am_looking_at.hold($head/right_hand)
 
+	
 	if Input.is_action_just_pressed("esc"):
 		quit_game()
 
@@ -96,16 +121,26 @@ func headbob(time) -> Vector3:
 	return pos
 
 func check_look_ray():
+	
+	$head/right_hand.look_at(camera.global_position - camera.global_basis.z * 10)
 	##Fail states to avoid calculating more than necessary
 	if not eye_ray.is_colliding():
+		$info_label.text = ""
+		i_am_looking_at = null
+		#$head/right_hand.rotation = Vector3(0,0,0)
 		return
-	if not eye_ray.get_collider().has_method("i_am_being_looked_at"):
-		return
+	#$head/right_hand.look_at(eye_ray.get_collision_point())
 	
-	eye_ray.get_collider().i_am_being_looked_at(self)
+	if not eye_ray.get_collider().has_method("i_am_being_looked_at"):
+		$info_label.text = ""
+		i_am_looking_at = null
+		return
 		
-		
-
+	i_am_looking_at = eye_ray.get_collider()
+	$info_label.global_position = i_am_looking_at.global_position
+	$info_label.global_position.y += .75
+	$info_label.text = i_am_looking_at.i_am_being_looked_at()
+	
 func move_physics_objects_out_of_my_way(delta):
 	var collision = move_and_collide(velocity * delta, true)
 	if collision:
@@ -113,12 +148,11 @@ func move_physics_objects_out_of_my_way(delta):
 		#print(object_collided_with)
 		if object_collided_with is RigidBody3D:
 			var pos =  collision.get_position()#object_collided_with.global_position - collision.get_position()
-			pos.y = 0
-			pos = object_collided_with.global_position - pos
+			pos.y = object_collided_with.global_position.y
+			pos = pos - object_collided_with.global_position
 			var dir = global_position.direction_to(collision.get_position())
 			dir.y = 0
 			object_collided_with.apply_impulse(dir, pos)
-
 
 func quit_game():
 	get_tree().quit()

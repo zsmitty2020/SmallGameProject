@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://bul3rykgia372"]
+[gd_scene load_steps=13 format=3 uid="uid://bul3rykgia372"]
 
 [ext_resource type="PackedScene" uid="uid://dlj45f7qa8xsq" path="res://experimental/chris/player2.tscn" id="1_2q7qu"]
+[ext_resource type="PackedScene" uid="uid://cf7lh4j754nva" path="res://experimental/chris/hitscan_gun.tscn" id="2_2bt4e"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sh8fu"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -78,3 +79,6 @@ mesh = SubResource("BoxMesh_fkcnc")
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
 transform = Transform3D(-6.68652e-07, 0, 1, 0, 4.00123, 0, -15.297, 0, -4.37114e-08, 7.83779, 0.104414, -0.247828)
 mesh = SubResource("BoxMesh_fkcnc")
+
+[node name="HitscanGun" parent="." instance=ExtResource("2_2bt4e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -2)

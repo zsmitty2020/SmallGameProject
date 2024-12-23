@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7cxjku1xtyhp"]
+
+[ext_resource type="Script" path="res://experimental/chris/hitscan_bullet.gd" id="1_d16xa"]
+
+[node name="HitscanBullet" type="RayCast3D"]
+script = ExtResource("1_d16xa")

@@ -1,18 +1,38 @@
-extends RigidBody3D
+extends Holdable
 
 class_name Weapon
 
-var attachment_joint = null
-var source_pos = Vector3(0,0,0)
-var offset = Vector3(0,0,0)
-var offset_reduction_rate = 3
+@export var projectile : PackedScene = null
 
-func i_am_being_looked_at(player_that_is_looking_at_me : PlayerBody):
-	pass
+var max_ammo = 32
+var cur_ammo = max_ammo
+
+var firing = false
+var fire_rate : float = 9.0 #in shots per second
+var cur_fire_cooldown : float =  0
+
+func use():
+	firing = true
 	
-func hold(attach_to):
-	attachment_joint = attach_to
-	#collision_layer = 0
-
+func dont_use():
+	firing = false
+	
 func shoot():
-	pass
+	#print(firing)
+	offset = .2
+	cur_fire_cooldown = 1 / fire_rate
+	cur_ammo -= 1
+	$ammo.text = str(cur_ammo)
+	#print("bang")
+
+func personal_process(delta):
+	if cur_fire_cooldown == 0:
+		if firing:
+			#print("do")
+			shoot()
+
+	if cur_fire_cooldown > 0:
+		cur_fire_cooldown -= delta
+		if cur_fire_cooldown < 0:
+			cur_fire_cooldown = 0
+		
