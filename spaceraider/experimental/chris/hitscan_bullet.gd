@@ -1,11 +1,22 @@
 extends RayCast3D
 
 
+var bullet_spawn_location : Vector3 = Vector3(0,0,0)
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	force_raycast_update()
+	$Node3D.global_position = bullet_spawn_location
+	if is_colliding():
+		point_bullet_at_target(get_collision_point())
+	else:
+		#print("do")
+		#print(global_position)
+		point_bullet_at_target(global_position + -global_basis.z * 200)
 
+func point_bullet_at_target(target_pos):
+	$Node3D.look_at(target_pos)
+	#$MeshInstance3D.rotate_x(PI/2)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	$Node3D.global_position -= $Node3D.global_basis.z * delta * 30

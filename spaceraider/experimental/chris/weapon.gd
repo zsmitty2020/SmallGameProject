@@ -19,11 +19,15 @@ func dont_use():
 	
 func shoot():
 	#print(firing)
+	spawn_bullet()
 	offset = .2
 	cur_fire_cooldown = 1 / fire_rate
 	cur_ammo -= 1
 	$ammo.text = str(cur_ammo)
 	#print("bang")
+
+func spawn_bullet():
+	print("bang")
 
 func personal_process(delta):
 	if cur_fire_cooldown == 0:

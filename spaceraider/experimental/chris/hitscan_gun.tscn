@@ -1,6 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cf7lh4j754nva"]
+[gd_scene load_steps=7 format=3 uid="uid://cf7lh4j754nva"]
 
-[ext_resource type="Script" path="res://experimental/chris/weapon.gd" id="1_6g2vw"]
+[ext_resource type="Script" path="res://experimental/chris/hitscan_gun.gd" id="1_eqno4"]
+[ext_resource type="PackedScene" uid="uid://c7cxjku1xtyhp" path="res://experimental/chris/hitscan_bullet.tscn" id="2_ucelj"]
+[ext_resource type="AudioStream" uid="uid://b4rxfjy020jvr" path="res://experimental/chris/im_tired_of_the_quiet.wav" id="3_ojret"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_a1uk7"]
 size = Vector3(0.2, 0.2, 1)
@@ -12,26 +14,30 @@ size = Vector3(0.15, 0.1, 0.5)
 size = Vector3(0.2, 0.2, 1)
 
 [node name="HitscanGun" type="RigidBody3D"]
-script = ExtResource("1_6g2vw")
+script = ExtResource("1_eqno4")
+projectile = ExtResource("2_ucelj")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.121397, 0, -0.0859279)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 mesh = SubResource("BoxMesh_a1uk7")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(-1.17225e-07, 0, 1, 0, 1, 0, -1, 0, -1.17225e-07, -0.165968, 0, -0.257559)
+transform = Transform3D(-1.17225e-07, 0, 1, 0, 1, 0, -1, 0, -1.17225e-07, -0.333564, 0, -0.159701)
 mesh = SubResource("BoxMesh_uin4t")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.121397, 0, -0.0859279)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 shape = SubResource("BoxShape3D_dgsqx")
 
 [node name="grab_spot" type="Node3D" parent="."]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.121397, 0, 0.164128)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0.3)
 
 [node name="barrel" type="Node3D" parent="."]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.10527, 0.018136, -0.554694)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -0.5)
 
 [node name="ammo" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.219586, 0, -0.173297)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.358675, 0, -0.075439)
 text = "32"
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_ojret")

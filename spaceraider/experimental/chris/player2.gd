@@ -56,7 +56,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			
 			if i_am_looking_at:
 				i_am_holding = i_am_looking_at
-				i_am_looking_at.hold($head/right_hand)
+				i_am_looking_at.hold($head/right_hand,self)
 
 	
 	if Input.is_action_just_pressed("esc"):
@@ -123,28 +123,32 @@ func headbob(time) -> Vector3:
 func check_look_ray():
 	
 	$head/right_hand.look_at(camera.global_position - camera.global_basis.z * 10)
+	$info_label.text = ""
+	i_am_looking_at = null
+	
 	##Fail states to avoid calculating more than necessary
 	if not eye_ray.is_colliding():
-		$info_label.text = ""
-		i_am_looking_at = null
 		#$head/right_hand.rotation = Vector3(0,0,0)
 		return
 	#$head/right_hand.look_at(eye_ray.get_collision_point())
 	
 	if not eye_ray.get_collider().has_method("i_am_being_looked_at"):
-		$info_label.text = ""
-		i_am_looking_at = null
 		return
 		
 	i_am_looking_at = eye_ray.get_collider()
 	$info_label.global_position = i_am_looking_at.global_position
 	$info_label.global_position.y += .75
 	$info_label.text = i_am_looking_at.i_am_being_looked_at()
+	#$info_label.look_at(camera.global_position)
 	
 func move_physics_objects_out_of_my_way(delta):
+
 	var collision = move_and_collide(velocity * delta, true)
 	if collision:
 		var object_collided_with = collision.get_collider()
+		
+		if object_collided_with.global_position.y < global_position.y - 1:
+			return
 		#print(object_collided_with)
 		if object_collided_with is RigidBody3D:
 			var pos =  collision.get_position()#object_collided_with.global_position - collision.get_position()

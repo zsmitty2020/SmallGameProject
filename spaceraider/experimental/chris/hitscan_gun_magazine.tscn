@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://deaaq3a25pjic"]
+
+[node name="HitscanGunMagazine" type="RigidBody3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
