@@ -1,0 +1,114 @@
+[gd_scene load_steps=15 format=3 uid="uid://s88jnwb2dt3p"]
+
+[ext_resource type="PackedScene" uid="uid://dg2lesfbd7l07" path="res://experimental/smitty/smitt_player.tscn" id="1_kibk5"]
+[ext_resource type="PackedScene" uid="uid://ci80bm6w5fodk" path="res://experimental/smitty/oxygen_area.tscn" id="2_13uy8"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sh8fu"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_m54vw"]
+sky_material = SubResource("ProceduralSkyMaterial_sh8fu")
+
+[sub_resource type="Environment" id="Environment_80bij"]
+background_mode = 2
+sky = SubResource("Sky_m54vw")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u41u1"]
+albedo_color = Color(0.523483, 0.250395, 9.62615e-08, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8pnuk"]
+material = SubResource("StandardMaterial3D_u41u1")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4m0x0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jp0tk"]
+albedo_color = Color(0.299547, 0.299547, 0.299547, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_fvdvu"]
+material = SubResource("StandardMaterial3D_jp0tk")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x6ak6"]
+albedo_color = Color(0.299547, 0.299547, 0.299547, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_gayww"]
+material = SubResource("StandardMaterial3D_x6ak6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rofg1"]
+albedo_color = Color(0.299547, 0.299547, 0.299547, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_lxgmw"]
+material = SubResource("StandardMaterial3D_rofg1")
+
+[node name="mainRoot" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-1, 6.18172e-08, -6.18172e-08, 0, 0.707107, 0.707107, 8.74228e-08, 0.707107, -0.707107, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_80bij")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(15, 0, 0, 0, 1, 0, 0, 0, 15, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("BoxMesh_8pnuk")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_4m0x0")
+
+[node name="wall" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 6.2173, 0, 0, 0, 16.1139, 7.20079, 1.77507, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="wall"]
+mesh = SubResource("BoxMesh_fvdvu")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="wall"]
+shape = SubResource("BoxShape3D_4m0x0")
+
+[node name="wall2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 6.2173, 0, 0, 0, 16.1139, -7.10268, 1.77507, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="wall2"]
+mesh = SubResource("BoxMesh_gayww")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="wall2"]
+shape = SubResource("BoxShape3D_4m0x0")
+
+[node name="wall3" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.0231061, 0, 16.1096, 0, 6.2173, 0, -0.999733, 0, -0.372329, -0.0261419, 1.77507, 7.47375)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="wall3"]
+mesh = SubResource("BoxMesh_gayww")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="wall3"]
+shape = SubResource("BoxShape3D_4m0x0")
+
+[node name="wall4" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.0231061, 0, 16.1096, 0, 6.2173, 0, -0.999733, 0, -0.372329, -0.0261419, 1.77507, -7.69769)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="wall4"]
+mesh = SubResource("BoxMesh_lxgmw")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="wall4"]
+shape = SubResource("BoxShape3D_4m0x0")
+
+[node name="oxygen_area" parent="." instance=ExtResource("2_13uy8")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 5.11466, 1.75182, -5.89598)
+
+[node name="smittPlayerRoot" parent="." instance=ExtResource("1_kibk5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.468044, 2.32273, -0.130535)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
