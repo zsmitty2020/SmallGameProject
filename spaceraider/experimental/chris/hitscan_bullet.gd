@@ -2,6 +2,8 @@ extends RayCast3D
 
 
 var bullet_spawn_location : Vector3 = Vector3(0,0,0)
+var die : float = 2.0
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	force_raycast_update()
@@ -20,3 +22,6 @@ func point_bullet_at_target(target_pos):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	$Node3D.global_position -= $Node3D.global_basis.z * delta * 30
+	die -= delta
+	if die <= 0:
+		queue_free()

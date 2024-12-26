@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bul3rykgia372"]
+[gd_scene load_steps=14 format=3 uid="uid://bul3rykgia372"]
 
 [ext_resource type="PackedScene" uid="uid://dlj45f7qa8xsq" path="res://experimental/chris/player2.tscn" id="1_2q7qu"]
 [ext_resource type="PackedScene" uid="uid://cf7lh4j754nva" path="res://experimental/chris/hitscan_gun.tscn" id="2_2bt4e"]
@@ -34,6 +34,9 @@ albedo_color = Color(1, 0.768627, 0.576471, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_fkcnc"]
 material = SubResource("StandardMaterial3D_h5aq5")
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_mqo7j"]
+viewport_path = NodePath("SubViewport")
+
 [node name="mainRoot" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -48,6 +51,8 @@ transform = Transform3D(15, 0, 0, 0, 1, 0, 0, 0, 15, 0, 0, 0)
 mesh = SubResource("BoxMesh_8pnuk")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
 shape = SubResource("BoxShape3D_4m0x0")
@@ -82,3 +87,12 @@ mesh = SubResource("BoxMesh_fkcnc")
 
 [node name="HitscanGun" parent="." instance=ExtResource("2_2bt4e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -2)
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6.75414, 3, 0.303434)
+texture = SubResource("ViewportTexture_mqo7j")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport"]
+transform = Transform3D(-3.78552e-08, -0.5, 0.866025, -2.18557e-08, 0.866025, 0.5, -1, 0, -4.37114e-08, 6.60973, 3, -0.034029)

@@ -35,8 +35,8 @@ func dont_use():
 
 func _process(delta):
 	if attachment_joint:
-		#global_basis = attachment_joint.global_basis
-		global_basis = global_basis.slerp(attachment_joint.global_basis, delta * 16).orthonormalized()
+		global_basis = attachment_joint.global_basis
+		#global_basis = global_basis.slerp(attachment_joint.global_basis, delta * 16).orthonormalized()
 		global_position = attachment_joint.global_position + (global_position - (grab_spot.global_position - offset * global_basis.z))
 	offset = offset + (0 - offset) * delta * 5
 	personal_process(delta)

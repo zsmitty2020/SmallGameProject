@@ -45,7 +45,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.753313)
 mesh = SubResource("SphereMesh_bqm4e")
 
 [node name="right_hand" type="Node3D" parent="head"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.464136, -0.324466, -0.224276)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, -0.3, -0.4)
 
 [node name="info_label" type="Label3D" parent="."]
 billboard = 1

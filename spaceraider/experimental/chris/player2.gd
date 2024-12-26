@@ -57,6 +57,11 @@ func _unhandled_input(event: InputEvent) -> void:
 			if i_am_looking_at:
 				i_am_holding = i_am_looking_at
 				i_am_looking_at.hold($head/right_hand,self)
+		
+		elif OS.get_keycode_string(event.keycode) == 'R':
+			if i_am_holding:
+				if i_am_holding is Weapon:
+					i_am_holding.reload()
 
 	
 	if Input.is_action_just_pressed("esc"):

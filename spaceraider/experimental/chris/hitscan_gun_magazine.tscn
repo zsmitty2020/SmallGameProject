@@ -1,7 +1,17 @@
-[gd_scene format=3 uid="uid://deaaq3a25pjic"]
+[gd_scene load_steps=3 format=3 uid="uid://deaaq3a25pjic"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vvdun"]
+size = Vector3(0.15, 0.1, 0.4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_gcp3a"]
+size = Vector3(0.15, 0.1, 0.4)
 
 [node name="HitscanGunMagazine" type="RigidBody3D"]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_vvdun")
+
+[node name="ammo_box_mesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_gcp3a")

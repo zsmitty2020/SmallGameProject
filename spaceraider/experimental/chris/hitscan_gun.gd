@@ -1,6 +1,8 @@
 extends Weapon
 
 func spawn_bullet():
+	$AudioStreamPlayer3D.pitch_scale = randf_range(.97, 1.03)
+	#print($AudioStreamPlayer3D.pitch_scale)
 	$AudioStreamPlayer3D.play()
 	var new_bullet = projectile.instantiate()
 	new_bullet.bullet_spawn_location = $barrel.global_position
