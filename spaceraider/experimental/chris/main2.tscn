@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://bul3rykgia372"]
+[gd_scene load_steps=15 format=3 uid="uid://bul3rykgia372"]
 
 [ext_resource type="PackedScene" uid="uid://dlj45f7qa8xsq" path="res://experimental/chris/player2.tscn" id="1_2q7qu"]
 [ext_resource type="PackedScene" uid="uid://cf7lh4j754nva" path="res://experimental/chris/hitscan_gun.tscn" id="2_2bt4e"]
+[ext_resource type="PackedScene" uid="uid://bhlr5tgyd1ycu" path="res://experimental/chris/epic_box.tscn" id="3_02eh6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sh8fu"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -61,7 +62,7 @@ shape = SubResource("BoxShape3D_4m0x0")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3583, 1.91968, 3.11307)
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.31739, 3, 2.32557)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
 shape = SubResource("BoxShape3D_jmgou")
@@ -96,3 +97,12 @@ texture = SubResource("ViewportTexture_mqo7j")
 
 [node name="Camera3D" type="Camera3D" parent="SubViewport"]
 transform = Transform3D(-3.78552e-08, -0.5, 0.866025, -2.18557e-08, 0.866025, 0.5, -1, 0, -4.37114e-08, 6.60973, 3, -0.034029)
+
+[node name="EpicBox" parent="." instance=ExtResource("3_02eh6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, 0)
+
+[node name="HitscanGun2" parent="." instance=ExtResource("2_2bt4e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.85028, 1.46322, -2.23217)
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.22529, -4.84046)

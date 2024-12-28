@@ -29,15 +29,19 @@ func use():
 func dont_use():
 	firing = false
 
-func drop():
+func drop() -> bool:
 	if reloading:
-		return
+		
+		return false
 	
 	dont_use()
 	attachment_joint = null
 	possessor = null
 	freeze = false
+	visible = true
 	collision_layer = 1
+	collision_mask = 1
+	return true
 
 func shoot():
 	#print(firing)

@@ -19,13 +19,17 @@ func hold(attach_to, holder):
 	possessor = holder
 	freeze = true
 	collision_layer = 0
+	collision_mask = 0
 	
-func drop():
+func drop(): #-> bool:
 	dont_use()
 	attachment_joint = null
 	possessor = null
 	freeze = false
+	visible = true
 	collision_layer = 1
+	collision_mask = 1
+	#return true
 
 func use():
 	pass 
@@ -40,6 +44,7 @@ func _process(delta):
 		global_position = attachment_joint.global_position + (global_position - (grab_spot.global_position - offset * global_basis.z))
 	offset = offset + (0 - offset) * delta * 5
 	personal_process(delta)
+
 
 func personal_process(delta):
 	pass

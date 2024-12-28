@@ -22,9 +22,10 @@ const FOV_CHANGE = 1.25
 @onready var head = $head
 @onready var camera = $head/Camera3D
 @onready var eye_ray = $head/Camera3D/look_ray
+@onready var inventory : Inventory = $Inventory
 
 var i_am_looking_at : Holdable = null
-var i_am_holding = null
+#var i_am_holding = null
 #signal im_looking_at(object)
 
 func _ready() -> void:
@@ -37,6 +38,35 @@ func _unhandled_input(event: InputEvent) -> void:
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-60), deg_to_rad(80))
 	
 	if event is InputEventMouseButton:
+		
+		if event.button_index == 1:
+			if event.pressed:
+				inventory.use_left(i_am_looking_at)
+			else:
+				inventory.stop_use_left()
+			
+		elif event.button_index == 2:
+			
+			if event.pressed:
+				inventory.use_right(i_am_looking_at)
+			else:
+				inventory.stop_use_right()
+
+
+	if event is InputEventKey and event.pressed:
+		inventory.inventory_button_pressed(event.keycode)
+		
+		if OS.get_keycode_string(event.keycode) == 'F':
+			inventory.swap_left_right_hand()
+		
+		if OS.get_keycode_string(event.keycode) == 'R':
+			inventory.reload_weapons()
+			
+		if OS.get_keycode_string(event.keycode) == 'Q':
+			inventory.dropping_items = not inventory.dropping_items
+			$head/Camera3D/Label3D.visible = not $head/Camera3D/Label3D.visible
+		#print(event.keycode)
+		"""
 		if event.button_index == 1:
 			if event.pressed:
 				if i_am_holding:
@@ -51,8 +81,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		if OS.get_keycode_string(event.keycode) == 'E':
 			
 			if i_am_holding:
-				i_am_holding.drop()
-				i_am_holding = null
+				if i_am_holding.drop():
+					i_am_holding = null
 			
 			if i_am_looking_at:
 				i_am_holding = i_am_looking_at
@@ -62,10 +92,11 @@ func _unhandled_input(event: InputEvent) -> void:
 			if i_am_holding:
 				if i_am_holding is Weapon:
 					i_am_holding.reload()
-
+	"""
 	
 	if Input.is_action_just_pressed("esc"):
-		quit_game()
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		#quit_game()
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -128,6 +159,7 @@ func headbob(time) -> Vector3:
 func check_look_ray():
 	
 	$head/right_hand.look_at(camera.global_position - camera.global_basis.z * 10)
+	$head/left_hand.look_at(camera.global_position - camera.global_basis.z * 10)
 	$info_label.text = ""
 	i_am_looking_at = null
 	
