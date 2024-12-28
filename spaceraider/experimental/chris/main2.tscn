@@ -105,4 +105,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.85028, 1.46322, -2.23217)
 
 [node name="Label3D" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.22529, -4.84046)
+transform = Transform3D(1, 0, 0, 0, 0.939478, -0.342611, 0, 0.342611, 0.939478, 0, 3.79274, -4.84046)
+text = "Left and Right Click picks up the object you are looking at
+and places the object in the corresponding hand.
+
+'F' will swap the objects in the left and right hand.
+
+Pressing a Number Key (currently 1-4) swaps in the object in your
+>>> LEFT hand <<<
+to the corresponding slot in your inventory. 
+
+If that slot already contains an object, the two objects will be swapped.
+If your left hand has nothing, the object in the slot will be palced there.
+
+'Q' will put your in Dropping Mode. Pressing any of the previous keys (other than 'F')
+will drop the object currently there onto the ground. "
