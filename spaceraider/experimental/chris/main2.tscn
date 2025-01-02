@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://bul3rykgia372"]
+[gd_scene load_steps=16 format=3 uid="uid://bul3rykgia372"]
 
 [ext_resource type="PackedScene" uid="uid://dlj45f7qa8xsq" path="res://experimental/chris/player2.tscn" id="1_2q7qu"]
 [ext_resource type="PackedScene" uid="uid://cf7lh4j754nva" path="res://experimental/chris/hitscan_gun.tscn" id="2_2bt4e"]
 [ext_resource type="PackedScene" uid="uid://bhlr5tgyd1ycu" path="res://experimental/chris/epic_box.tscn" id="3_02eh6"]
+[ext_resource type="PackedScene" uid="uid://dn8jji0pfkpl8" path="res://experimental/chris/epic_box_two_hands.tscn" id="4_a4o7w"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sh8fu"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -120,3 +121,9 @@ If your left hand has nothing, the object in the slot will be palced there.
 
 'Q' will put your in Dropping Mode. Pressing any of the previous keys (other than 'F')
 will drop the object currently there onto the ground. "
+
+[node name="EpicBox2" parent="." instance=ExtResource("4_a4o7w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.22673, 1.27356, -0.316087)
+
+[node name="EpicBox3" parent="." instance=ExtResource("4_a4o7w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.0283, 1.27356, -0.316087)

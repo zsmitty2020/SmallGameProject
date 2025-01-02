@@ -56,6 +56,9 @@ text = "DROPPING ITEMS"
 [node name="right_hand" type="Node3D" parent="head"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, -0.3, -0.4)
 
+[node name="both_hands" type="Node3D" parent="head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, -0.4)
+
 [node name="left_hand" type="Node3D" parent="head"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, -0.3, -0.4)
 
@@ -63,9 +66,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, -0.3, -0.4)
 billboard = 1
 texture_filter = 1
 
-[node name="Inventory" type="Node" parent="." node_paths=PackedStringArray("left_hand_spot", "right_hand_spot", "inventory_owner", "inventory_info")]
+[node name="Inventory" type="Node" parent="." node_paths=PackedStringArray("left_hand_spot", "both_hands_spot", "right_hand_spot", "inventory_owner", "inventory_info")]
 script = ExtResource("2_7b887")
 left_hand_spot = NodePath("../head/left_hand")
+both_hands_spot = NodePath("../head/both_hands")
 right_hand_spot = NodePath("../head/right_hand")
 inventory_owner = NodePath("..")
 inventory_info = NodePath("../head/Camera3D/temp_inventory_ui")

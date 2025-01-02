@@ -65,6 +65,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		if OS.get_keycode_string(event.keycode) == 'Q':
 			inventory.dropping_items = not inventory.dropping_items
 			$head/Camera3D/Label3D.visible = not $head/Camera3D/Label3D.visible
+		
+		if OS.get_keycode_string(event.keycode) == 'Z':
+			inventory.print_slots()
 		#print(event.keycode)
 		"""
 		if event.button_index == 1:

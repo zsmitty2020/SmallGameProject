@@ -2,6 +2,9 @@ extends RigidBody3D
 
 class_name Holdable
 
+@export var needs_two_hands : bool = false
+@export var weight : int = 1
+
 var possessor : Node3D = null
 var attachment_joint : Node3D = null
 var offset = 0
