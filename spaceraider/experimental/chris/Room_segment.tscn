@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cv6pbglfevsap"]
+
+[ext_resource type="Script" path="res://experimental/chris/room_segment.gd" id="1_whyml"]
+
+[node name="RoomSegment" type="Node3D"]
+script = ExtResource("1_whyml")

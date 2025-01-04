@@ -15,10 +15,11 @@ var cur_fire_cooldown : float =  0
 
 
 @onready var reload_timer :Timer = $reload_timer
+@onready var ammo_text : Label3D = $ammo
 var reloading : bool = false
 
 func _ready():
-	$ammo.text = str(cur_ammo)
+	ammo_text.text = str(cur_ammo)
 	reload_timer.timeout.connect(reload_phase_2)
 
 func use():
@@ -52,7 +53,7 @@ func shoot():
 	offset = .2
 	cur_fire_cooldown = 1 / fire_rate
 	cur_ammo -= 1
-	$ammo.text = str(cur_ammo)
+	ammo_text.text = str(cur_ammo)
 	#print("bang")
 
 func reload():
@@ -66,15 +67,15 @@ func reload():
 	firing = false
 	reload_timer.start()
 	$ammo_box_mesh.visible = false
-	$ammo.visible = false
+	ammo_text.visible = false
 	#apply_central_impulse(global_basis.x * 20)
 
 func reload_phase_2():
 	reloading = false
 	$ammo_box_mesh.visible = true
-	$ammo.visible = true
+	ammo_text.visible = true
 	cur_ammo = max_ammo
-	$ammo.text = str(cur_ammo)
+	ammo_text.text = str(cur_ammo)
 
 func spawn_bullet():
 	print("bang")

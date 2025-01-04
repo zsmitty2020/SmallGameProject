@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://dm6uu5jnyal8u"]
+
+[ext_resource type="Script" path="res://experimental/chris/room_segment.gd" id="1_uqphl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nig61"]
+albedo_color = Color(0.776471, 0.576471, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_pn5vf"]
+material = SubResource("StandardMaterial3D_nig61")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m2rbq"]
+
+[node name="TestTile1" type="Node3D"]
+script = ExtResource("1_uqphl")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, 0.2, 0, 0, 0, 4, 2, -0.1, 2)
+mesh = SubResource("BoxMesh_pn5vf")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("BoxShape3D_m2rbq")

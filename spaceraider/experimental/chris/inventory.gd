@@ -192,6 +192,8 @@ func inventory_button_pressed(button:int):
 				left_hand_item = null
 				right_hand_item = thing_to_put_in_right_hand
 				if right_hand_item:
+					right_hand_item.drop()
+					right_hand_item.hold(right_hand_spot, get_parent())
 					right_hand_item.visible = true
 				return
 			

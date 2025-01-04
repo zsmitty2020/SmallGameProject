@@ -1,9 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://bul3rykgia372"]
+[gd_scene load_steps=18 format=3 uid="uid://bul3rykgia372"]
 
 [ext_resource type="PackedScene" uid="uid://dlj45f7qa8xsq" path="res://experimental/chris/player2.tscn" id="1_2q7qu"]
 [ext_resource type="PackedScene" uid="uid://cf7lh4j754nva" path="res://experimental/chris/hitscan_gun.tscn" id="2_2bt4e"]
 [ext_resource type="PackedScene" uid="uid://bhlr5tgyd1ycu" path="res://experimental/chris/epic_box.tscn" id="3_02eh6"]
 [ext_resource type="PackedScene" uid="uid://dn8jji0pfkpl8" path="res://experimental/chris/epic_box_two_hands.tscn" id="4_a4o7w"]
+[ext_resource type="PackedScene" uid="uid://40o3vxjeigij" path="res://experimental/chris/test_room.tscn" id="5_v7nli"]
+[ext_resource type="PackedScene" uid="uid://c0ijn87j20kiu" path="res://experimental/chris/spike_gun.tscn" id="6_tilti"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sh8fu"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -97,7 +99,7 @@ texture = SubResource("ViewportTexture_mqo7j")
 [node name="SubViewport" type="SubViewport" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="SubViewport"]
-transform = Transform3D(-3.78552e-08, -0.5, 0.866025, -2.18557e-08, 0.866025, 0.5, -1, 0, -4.37114e-08, 6.60973, 3, -0.034029)
+transform = Transform3D(0.99736, -0.0363058, 0.0628835, -0.0614279, 0.0399052, 0.997313, -0.0387176, -0.998544, 0.0375697, -29.554, 32.5198, -0.034029)
 
 [node name="EpicBox" parent="." instance=ExtResource("3_02eh6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, 0)
@@ -127,3 +129,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.22673, 1.27356, -0.316087)
 
 [node name="EpicBox3" parent="." instance=ExtResource("4_a4o7w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.0283, 1.27356, -0.316087)
+
+[node name="test_room" parent="." instance=ExtResource("5_v7nli")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54.0993, 0, -23.7572)
+
+[node name="RigidBody3D2" parent="." instance=ExtResource("6_tilti")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.871653, 0.830204, -2.29305)

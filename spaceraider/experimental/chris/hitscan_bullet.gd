@@ -2,7 +2,7 @@ extends RayCast3D
 
 
 var bullet_spawn_location : Vector3 = Vector3(0,0,0)
-var die : float = 2.0
+var die : float = 1.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

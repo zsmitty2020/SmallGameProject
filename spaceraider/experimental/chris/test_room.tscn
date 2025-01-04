@@ -1,0 +1,10 @@
+[gd_scene load_steps=5 format=3 uid="uid://40o3vxjeigij"]
+
+[ext_resource type="Script" path="res://experimental/chris/room.gd" id="1_pyrp1"]
+[ext_resource type="PackedScene" uid="uid://dm6uu5jnyal8u" path="res://experimental/chris/room_tiles/test_tile_1.tscn" id="2_xnqmg"]
+[ext_resource type="PackedScene" uid="uid://dj0252chwx25w" path="res://experimental/chris/room_tiles/test_tile_2.tscn" id="3_ebpxe"]
+[ext_resource type="PackedScene" uid="uid://cy6cxicgawjec" path="res://experimental/chris/room_tiles/test_tile_3.tscn" id="4_mpn3j"]
+
+[node name="test_room" type="Node3D"]
+script = ExtResource("1_pyrp1")
+room_segments = Array[PackedScene]([ExtResource("2_xnqmg"), ExtResource("3_ebpxe"), ExtResource("4_mpn3j")])

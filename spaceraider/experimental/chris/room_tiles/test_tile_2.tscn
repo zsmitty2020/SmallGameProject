@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://dj0252chwx25w"]
+
+[ext_resource type="Script" path="res://experimental/chris/room_segment.gd" id="1_n4wsb"]
+[ext_resource type="PackedScene" uid="uid://cf7lh4j754nva" path="res://experimental/chris/hitscan_gun.tscn" id="2_5j5m0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_81ebb"]
+albedo_color = Color(0.654902, 0.909804, 0.854902, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_d3s0s"]
+material = SubResource("StandardMaterial3D_81ebb")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_he05c"]
+
+[node name="TestTile2" type="Node3D"]
+script = ExtResource("1_n4wsb")
+width = 8
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(8, 0, 0, 0, 0.2, 0, 0, 0, 4, 4, -0.1, 2)
+mesh = SubResource("BoxMesh_d3s0s")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("BoxShape3D_he05c")
+
+[node name="HitscanGun" parent="." instance=ExtResource("2_5j5m0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.786458, 2)

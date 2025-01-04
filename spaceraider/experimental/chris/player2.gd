@@ -163,6 +163,7 @@ func check_look_ray():
 	
 	$head/right_hand.look_at(camera.global_position - camera.global_basis.z * 10)
 	$head/left_hand.look_at(camera.global_position - camera.global_basis.z * 10)
+	$head/both_hands.look_at(camera.global_position - camera.global_basis.z * 10)
 	$info_label.text = ""
 	i_am_looking_at = null
 	
