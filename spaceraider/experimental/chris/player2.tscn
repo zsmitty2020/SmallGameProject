@@ -19,7 +19,7 @@ material = SubResource("StandardMaterial3D_kno38")
 radius = 0.01
 height = 0.02
 
-[node name="playerRoot" type="CharacterBody3D"]
+[node name="playerRoot" type="CharacterBody3D" groups=["player_group"]]
 script = ExtResource("1_5jh1p")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

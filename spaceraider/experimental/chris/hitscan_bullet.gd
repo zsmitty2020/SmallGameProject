@@ -17,7 +17,6 @@ func _ready() -> void:
 
 func point_bullet_at_target(target_pos):
 	$Node3D.look_at(target_pos)
-	#$MeshInstance3D.rotate_x(PI/2)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

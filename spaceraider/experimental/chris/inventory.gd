@@ -304,9 +304,6 @@ func inventory_button_pressed(button:int):
 	#if inventory_item_in_slot:
 		#pass
 
-func handle_placing_two_handed_item_into_inventory(item : Holdable, at_index : int):
-	pass
-
 func get_other_slot_of_two_handed_item_in_inventory(index_A : int, item : Holdable) -> int:
 	
 	if index_A == 0:
