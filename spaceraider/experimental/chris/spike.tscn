@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://experimental/chris/spike.gd" id="1_spg73"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1j0kx"]
-albedo_color = Color(0.381703, 0.381703, 0.381703, 1)
+albedo_color = Color(1, 0.380392, 0.380392, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_kjq6f"]
 material = SubResource("StandardMaterial3D_1j0kx")
@@ -11,9 +11,8 @@ top_radius = 0.0
 bottom_radius = 0.07
 height = 0.8
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_fqbbr"]
-height = 0.382377
-radius = 0.07
+[sub_resource type="SphereShape3D" id="SphereShape3D_hdn5a"]
+radius = 0.0798518
 
 [node name="spike" type="Area3D"]
 script = ExtResource("1_spg73")
@@ -23,7 +22,7 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 
 mesh = SubResource("CylinderMesh_kjq6f")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.0187888)
-shape = SubResource("CylinderShape3D_fqbbr")
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.0922238)
+shape = SubResource("SphereShape3D_hdn5a")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

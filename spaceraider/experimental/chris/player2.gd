@@ -36,6 +36,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		head.rotate_y(-event.relative.x * SENSITIVITY)
 		camera.rotate_x(-event.relative.y * SENSITIVITY)
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-60), deg_to_rad(80))
+		$head/shoulders.rotation.x = camera.rotation.x
 	
 	if event is InputEventMouseButton:
 		
@@ -161,9 +162,10 @@ func headbob(time) -> Vector3:
 
 func check_look_ray():
 	
-	$head/right_hand.look_at(camera.global_position - camera.global_basis.z * 10)
-	$head/left_hand.look_at(camera.global_position - camera.global_basis.z * 10)
-	$head/both_hands.look_at(camera.global_position - camera.global_basis.z * 10)
+	$head/shoulders/right_hand.look_at(camera.global_position - camera.global_basis.z * 10)
+	$head/shoulders/left_hand.look_at(camera.global_position - camera.global_basis.z * 10)
+	$head/shoulders/both_hands.look_at(camera.global_position - camera.global_basis.z * 10)
+	
 	$info_label.text = ""
 	i_am_looking_at = null
 	

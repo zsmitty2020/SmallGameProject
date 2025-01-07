@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://7gerkpst0gdc"]
+
+[ext_resource type="Script" path="res://experimental/chris/room_segment.gd" id="1_je8of"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yw2nh"]
+albedo_color = Color(0.270588, 0, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_l5ah1"]
+material = SubResource("StandardMaterial3D_yw2nh")
+size = Vector3(4, 0.2, 4)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xw1o1"]
+albedo_color = Color(0.215686, 0.0901961, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_bkc6j"]
+material = SubResource("StandardMaterial3D_xw1o1")
+size = Vector3(4, 0.2, 4)
+
+[node name="TestTile4" type="Node3D"]
+script = ExtResource("1_je8of")
+width = 8
+height = 8
+holes = Array[Vector4i]([Vector4i(1, 0, 1, 1), Vector4i(0, 1, 1, 1)])
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.1, 2)
+mesh = SubResource("BoxMesh_l5ah1")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -0.1, 6)
+mesh = SubResource("BoxMesh_bkc6j")

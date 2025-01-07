@@ -1,10 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://40o3vxjeigij"]
+[gd_scene load_steps=7 format=3 uid="uid://40o3vxjeigij"]
 
 [ext_resource type="Script" path="res://experimental/chris/room.gd" id="1_pyrp1"]
 [ext_resource type="PackedScene" uid="uid://dm6uu5jnyal8u" path="res://experimental/chris/room_tiles/test_tile_1.tscn" id="2_xnqmg"]
 [ext_resource type="PackedScene" uid="uid://dj0252chwx25w" path="res://experimental/chris/room_tiles/test_tile_2.tscn" id="3_ebpxe"]
 [ext_resource type="PackedScene" uid="uid://cy6cxicgawjec" path="res://experimental/chris/room_tiles/test_tile_3.tscn" id="4_mpn3j"]
+[ext_resource type="PackedScene" uid="uid://dnok446r6x5v" path="res://experimental/chris/room_tiles/room_wall_segment.tscn" id="5_bwwpk"]
+[ext_resource type="PackedScene" uid="uid://7gerkpst0gdc" path="res://experimental/chris/room_tiles/test_tile_4.tscn" id="5_hngrb"]
 
 [node name="test_room" type="Node3D"]
 script = ExtResource("1_pyrp1")
-room_segments = Array[PackedScene]([ExtResource("2_xnqmg"), ExtResource("3_ebpxe"), ExtResource("4_mpn3j")])
+room_segments = Array[PackedScene]([ExtResource("2_xnqmg"), ExtResource("3_ebpxe"), ExtResource("4_mpn3j"), ExtResource("5_hngrb")])
+holes = Array[Vector4i]([Vector4i(2, 1, 3, 3), Vector4i(5, 4, 2, 4)])
+wall_scene = ExtResource("5_bwwpk")

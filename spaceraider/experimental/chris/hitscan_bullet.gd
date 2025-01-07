@@ -20,7 +20,7 @@ func point_bullet_at_target(target_pos):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	$Node3D.global_position -= $Node3D.global_basis.z * delta * 30
+	$Node3D.global_position -= $Node3D.global_basis.z * delta * 50
 	die -= delta
 	if die <= 0:
 		queue_free()
