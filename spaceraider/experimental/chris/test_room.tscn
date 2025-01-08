@@ -10,5 +10,5 @@
 [node name="test_room" type="Node3D"]
 script = ExtResource("1_pyrp1")
 room_segments = Array[PackedScene]([ExtResource("2_xnqmg"), ExtResource("3_ebpxe"), ExtResource("4_mpn3j"), ExtResource("5_hngrb")])
-holes = Array[Vector4i]([Vector4i(2, 1, 3, 3), Vector4i(5, 4, 2, 4)])
+holes = Array[Vector4i]([Vector4i(2, 1, 3, 3), Vector4i(5, 4, 2, 4), Vector4i(8, 8, 2, 2)])
 wall_scene = ExtResource("5_bwwpk")

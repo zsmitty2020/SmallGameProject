@@ -17,9 +17,9 @@ var usuable_room_segments = {}
 @export var wall_scene : PackedScene = null
 
 var grid = []
-# Called when the node enters the scene tree for the first time.
-func _process(delta):
-	make_room()
+
+#func _process(delta):
+	#make_room()
 
 func _ready() -> void:
 	for segment in room_segments:

@@ -71,7 +71,6 @@ func use_right(on_this : Node3D):
 				
 			else:
 				right_hand_item.hold(right_hand_spot, inventory_owner)
-	
 
 func stop_use_left():
 	if left_hand_item:
